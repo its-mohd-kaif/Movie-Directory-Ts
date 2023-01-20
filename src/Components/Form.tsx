@@ -57,7 +57,7 @@ function Form() {
               <span className="input-group-text" id="basic-addon2">Movie Name</span>
             </div>
             <div className="input-group mb-3">
-              <input ref={rating} type="number" className="form-control" placeholder="Enter Ratings On A Scale 1 to 100..." aria-label="Recipient's username" aria-describedby="basic-addon2" />
+              <input ref={rating} type="number" className="form-control" placeholder="Enter Ratings On A Scale 0 to 100..." aria-label="Recipient's username" aria-describedby="basic-addon2" />
               <span className="input-group-text" id="basic-addon2">Ratings</span>
             </div>
             <div className="input-group mb-3">
