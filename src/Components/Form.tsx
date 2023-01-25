@@ -13,7 +13,8 @@ function Form() {
   // Add Movie In The List
   const addHandler = () => {
     // Regex for check user input for movie hour
-    let regex = /^[0-9]?.?[0-9]h$/i
+    let regexOfh = /^[0-9]?.?[0-9]h$/i
+    let regexOfm = /^[0-9]?.?[0-9]m$/i
     // Check Validation
     if (movieName.current.value === "" && null !== movieName.current) {
       alert("Movie Field Can Not Be Blank...");
@@ -28,22 +29,40 @@ function Form() {
       alert("Duration Field Can Not Be Blank...")
       duration.current.focus();
     } else if (duration.current.value !== "" && null !== duration.current) {
-      if (regex.test(duration.current.value) === false) {
-        alert("Please Specify Time in hour : Ex 1.5h")
+      if (regexOfh.test(duration.current.value) === false && regexOfm.test(duration.current.value) === false) {
+        alert("Please Specify Time in hour : Ex 1.5h Or 90m")
       } else {
         alert("Successfully Add")
-        // Add Object Into Context State
-        let obj = {
-          sort: Number(duration.current.value.slice(0, -2)),
-          movieName: movieName.current.value.toUpperCase(),
-          rating: Number(rating.current.value),
-          duration: duration.current.value
+        // If time in h
+        if (regexOfh.test(duration.current.value) === true) {
+          // Add Object Into Context State
+          let obj = {
+            movieName: movieName.current.value.toUpperCase(),
+            rating: Number(rating.current.value),
+            duration: Number(duration.current.value.slice(0, -1))
+          }
+          data.setMovie([...data.movie, obj])
+          clone.setClone([...clone.clone, obj])
+          movieName.current.value = ""
+          rating.current.value = ""
+          duration.current.value = ""
         }
-        data.setMovie([...data.movie, obj])
-        clone.setClone([...clone.clone, obj])
-        movieName.current.value = ""
-        rating.current.value = ""
-        duration.current.value = ""
+        // If time in m
+        else if (regexOfm.test(duration.current.value) === true) {
+          // Add Object Into Context State
+          let dur = Number(duration.current.value.slice(0, -1))
+          let obj = {
+            movieName: movieName.current.value.toUpperCase(),
+            rating: Number(rating.current.value),
+            duration: dur / 60,
+          }
+          data.setMovie([...data.movie, obj])
+          clone.setClone([...clone.clone, obj])
+          movieName.current.value = ""
+          rating.current.value = ""
+          duration.current.value = ""
+        }
+
       }
     }
   }

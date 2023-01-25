@@ -6,8 +6,8 @@ function DisplayCom() {
     let clone: any = useContext(movieContext)
     useEffect(() => {
         // Sort the movie array
-        data.movie.sort((a: any, b: any) => b.sort - a.sort)
-        clone.clone.sort((a: any, b: any) => b.sort - a.sort)
+        data.movie.sort((a: any, b: any) => b.duration - a.duration)
+        clone.clone.sort((a: any, b: any) => b.duration - a.duration)
         clone.setClone([...clone.clone])
         data.setMovie([...data.movie])
     }, [data.movie.length])
@@ -22,7 +22,7 @@ function DisplayCom() {
                                 <h5 className="card-title">{val.movieName}</h5>
                                 <p className="card-text">{val.rating}/100</p>
                             </div>
-                            <p style={{ float: "right" }} className="card-text" >{val.duration}</p>
+                            <p style={{ float: "right" }} className="card-text" >{val.duration}h</p>
                         </div>
                     </div>
                 ))
