@@ -13,7 +13,7 @@ function Form() {
   // Add Movie In The List
   const addHandler = () => {
     // Regex for check user input for movie hour
-    let regex = /^[0-9]?.?[0-9]hr$/i
+    let regex = /^[0-9]?.?[0-9]h$/i
     // Check Validation
     if (movieName.current.value === "" && null !== movieName.current) {
       alert("Movie Field Can Not Be Blank...");
@@ -29,7 +29,7 @@ function Form() {
       duration.current.focus();
     } else if (duration.current.value !== "" && null !== duration.current) {
       if (regex.test(duration.current.value) === false) {
-        alert("Please Specify Time in hour : Ex 1.5hr")
+        alert("Please Specify Time in hour : Ex 1.5h")
       } else {
         alert("Successfully Add")
         // Add Object Into Context State

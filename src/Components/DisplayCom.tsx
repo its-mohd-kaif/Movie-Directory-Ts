@@ -5,6 +5,7 @@ function DisplayCom() {
     let data: any = useContext(movieContext)
     let clone: any = useContext(movieContext)
     useEffect(() => {
+        // Sort the movie array
         data.movie.sort((a: any, b: any) => b.sort - a.sort)
         clone.clone.sort((a: any, b: any) => b.sort - a.sort)
         clone.setClone([...clone.clone])
